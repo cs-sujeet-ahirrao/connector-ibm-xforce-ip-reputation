@@ -1,0 +1,500 @@
+{
+  "type": "workflow_collections",
+  "data": [
+    {
+      "@type": "WorkflowCollection",
+      "name": "Sample - IBM X-Force IP Reputation - 1.0.0",
+      "description": "Sample playbooks for \"IBM X-Force IP Reputation\" connector. If you are planning to use any of the sample playbooks in your environment, ensure that you clone those playbooks and move them to a different collection, since the sample playbook collection gets deleted during connector upgrade and delete.",
+      "visible": true,
+      "image": "/api/3/images/f68a646e-6e62-4663-95d6-d0c1c963bf77",
+      "uuid": "e382700f-c23b-490b-9cdf-ce6886d325e6",
+      "id": 164,
+      "createUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
+      "createDate": 1638261806,
+      "modifyUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
+      "modifyDate": 1638261806,
+      "recordTags": [],
+      "workflows": [
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get IP Reputation",
+          "aliasName": null,
+          "tag": "#IBM X-Force IP Reputation",
+          "description": "Returns the IP reputation report for the specified IP.",
+          "isActive": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1638262404,
+          "collection": "/api/3/workflow_collections/e382700f-c23b-490b-9cdf-ce6886d325e6",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/3e6d797f-7e2e-4d3b-a184-ca9fe4a763b8",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Alerts",
+              "description": null,
+              "arguments": {
+                "route": "33911ba1-2d14-4dd8-96cc-5d4510f1be90",
+                "title": "IBM X-Force IP Reputation: Get IP Reputation",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "20",
+              "left": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "uuid": "3e6d797f-7e2e-4d3b-a184-ca9fe4a763b8",
+              "id": 5836
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Get IP Reputation",
+              "description": null,
+              "arguments": {
+                "name": "IBM X-Force IP Reputation",
+                "config": "5a444048-6ead-4806-b55b-1b95b233734a",
+                "params": {
+                  "ip": "1.2.3.4"
+                },
+                "version": "1.0.0",
+                "connector": "ibm-xforce-ip-reputation",
+                "operation": "get_ip_reputation",
+                "operationTitle": "Get IP Reputation",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "status": null,
+              "top": "120",
+              "left": "180",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "uuid": "f6950704-bc13-4cd0-96f9-6c50aee2887e",
+              "id": 5837
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Alerts -> Get IP Reputation",
+              "targetStep": "/api/3/workflow_steps/f6950704-bc13-4cd0-96f9-6c50aee2887e",
+              "sourceStep": "/api/3/workflow_steps/3e6d797f-7e2e-4d3b-a184-ca9fe4a763b8",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "82236e95-2782-4356-b0c1-15216ed956be"
+            }
+          ],
+          "priority": null,
+          "uuid": "07f4a578-48d4-4e29-ace4-8b4c0c20af63",
+          "recordTags": [
+            "IBM X-Force",
+            "IP Reputation"
+          ],
+          "id": 1487,
+          "createUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
+          "createDate": 1638261806,
+          "modifyUser": "/api/3/people/3451141c-bac6-467c-8d72-85e0fab569ce",
+          "modifyDate": 1638262405,
+          "owners": [],
+          "isPrivate": false
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get Malware Reputation",
+          "aliasName": null,
+          "tag": "#IBM X-Force IP Reputation",
+          "description": "Returns the malware associated with the entered IP.",
+          "isActive": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1638263017,
+          "collection": "/api/3/workflow_collections/e382700f-c23b-490b-9cdf-ce6886d325e6",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/db2d30dd-86d5-4b67-899b-1e4c79dcd1ae",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Alerts",
+              "description": null,
+              "arguments": {
+                "route": "60e78e70-9022-4dc1-8e08-bc13e5ac7516",
+                "title": "IBM X-Force IP Reputation: Get Malware Reputation",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "20",
+              "left": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "uuid": "db2d30dd-86d5-4b67-899b-1e4c79dcd1ae",
+              "id": 5838
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Malware Reputation",
+              "description": null,
+              "arguments": {
+                "name": "IBM X-Force IP Reputation",
+                "config": "5a444048-6ead-4806-b55b-1b95b233734a",
+                "params": {
+                  "ip": "1.2.3.4"
+                },
+                "version": "1.0.0",
+                "connector": "ibm-xforce-ip-reputation",
+                "operation": "get_malware_reputation",
+                "operationTitle": "Get Malware Reputation",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "status": null,
+              "top": "120",
+              "left": "180",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "uuid": "798bee88-150d-4815-891c-a3eef63609b0",
+              "id": 5839
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Alerts -> Get Malware Reputation",
+              "targetStep": "/api/3/workflow_steps/798bee88-150d-4815-891c-a3eef63609b0",
+              "sourceStep": "/api/3/workflow_steps/db2d30dd-86d5-4b67-899b-1e4c79dcd1ae",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "8e013e8f-599b-4c91-8624-471992909bb3"
+            }
+          ],
+          "priority": null,
+          "uuid": "17bd1c00-0275-4fc4-9705-de288f7c3e4e",
+          "recordTags": [
+            "IBM X-Force",
+            "IP Reputation"
+          ],
+          "id": 1488,
+          "createUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
+          "createDate": 1638261806,
+          "modifyUser": "/api/3/people/3451141c-bac6-467c-8d72-85e0fab569ce",
+          "modifyDate": 1638263018,
+          "owners": [],
+          "isPrivate": false
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get Networks for ASN",
+          "aliasName": null,
+          "tag": "#IBM X-Force IP Reputation",
+          "description": "Returns all networks that are assigned to an Autonomous System Number.",
+          "isActive": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1638263125,
+          "collection": "/api/3/workflow_collections/e382700f-c23b-490b-9cdf-ce6886d325e6",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/cc0085cb-ec27-495f-8f69-75dc4892d428",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Alerts",
+              "description": null,
+              "arguments": {
+                "route": "11e3d0de-a4de-4829-b260-712324a4820f",
+                "title": "IBM X-Force IP Reputation: Get Networks for ASN",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "20",
+              "left": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "uuid": "cc0085cb-ec27-495f-8f69-75dc4892d428",
+              "id": 5840
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Networks for ASN",
+              "description": null,
+              "arguments": {
+                "name": "IBM X-Force IP Reputation",
+                "config": "5a444048-6ead-4806-b55b-1b95b233734a",
+                "params": {
+                  "asn": "ASN1"
+                },
+                "version": "1.0.0",
+                "connector": "ibm-xforce-ip-reputation",
+                "operation": "get_networks_for_asn",
+                "operationTitle": "Get Networks for ASN",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "status": null,
+              "top": "120",
+              "left": "180",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "uuid": "9ad1c839-6352-4163-b5a0-f51f21e3d6f4",
+              "id": 5841
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Alerts -> Get Networks for ASN",
+              "targetStep": "/api/3/workflow_steps/9ad1c839-6352-4163-b5a0-f51f21e3d6f4",
+              "sourceStep": "/api/3/workflow_steps/cc0085cb-ec27-495f-8f69-75dc4892d428",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "bd25d4f8-ed50-4359-bd06-4cc5746099db"
+            }
+          ],
+          "priority": null,
+          "uuid": "212162f5-30c6-43fa-a67d-ef9b74c3b530",
+          "recordTags": [
+            "IBM X-Force",
+            "IP Reputation"
+          ],
+          "id": 1489,
+          "createUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
+          "createDate": 1638261806,
+          "modifyUser": "/api/3/people/3451141c-bac6-467c-8d72-85e0fab569ce",
+          "modifyDate": 1638263126,
+          "owners": [],
+          "isPrivate": false
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get IP Report",
+          "aliasName": null,
+          "tag": "#IBM X-Force IP Reputation",
+          "description": "Returns the IP report for the specified IP.",
+          "isActive": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1638262319,
+          "collection": "/api/3/workflow_collections/e382700f-c23b-490b-9cdf-ce6886d325e6",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/a9bbcdad-2524-4541-99d1-f6c0e239850a",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Alerts",
+              "description": null,
+              "arguments": {
+                "route": "418e323c-ff98-4bda-b400-14236fd5965e",
+                "title": "IBM X-Force IP Reputation: Get IP Report",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "20",
+              "left": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "uuid": "a9bbcdad-2524-4541-99d1-f6c0e239850a",
+              "id": 5834
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Get IP Report",
+              "description": null,
+              "arguments": {
+                "name": "IBM X-Force IP Reputation",
+                "config": "5a444048-6ead-4806-b55b-1b95b233734a",
+                "params": {
+                  "ip": "8.8.8.8"
+                },
+                "version": "1.0.0",
+                "connector": "ibm-xforce-ip-reputation",
+                "operation": "get_ip_report",
+                "operationTitle": "Get IP Report",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "status": null,
+              "top": "120",
+              "left": "180",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "uuid": "3c1ca412-5ba4-4fb8-b379-aea81a8c7fe7",
+              "id": 5835
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Alerts -> Get IP Report",
+              "targetStep": "/api/3/workflow_steps/3c1ca412-5ba4-4fb8-b379-aea81a8c7fe7",
+              "sourceStep": "/api/3/workflow_steps/a9bbcdad-2524-4541-99d1-f6c0e239850a",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "b8591afe-2674-44d7-9e04-b57b19a35873"
+            }
+          ],
+          "priority": null,
+          "uuid": "314fb487-4c0d-45e5-b31a-53810e7a4592",
+          "recordTags": [
+            "IBM X-Force",
+            "IP Reputation"
+          ],
+          "id": 1486,
+          "createUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
+          "createDate": 1638261806,
+          "modifyUser": "/api/3/people/3451141c-bac6-467c-8d72-85e0fab569ce",
+          "modifyDate": 1638262320,
+          "owners": [],
+          "isPrivate": false
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get IPs by Category",
+          "aliasName": null,
+          "tag": "#IBM X-Force IP Reputation",
+          "description": "Return a list of IPs according to the category and date range.",
+          "isActive": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1638262906,
+          "collection": "/api/3/workflow_collections/e382700f-c23b-490b-9cdf-ce6886d325e6",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/ca69c619-0695-42f3-87c9-0afd58656e8a",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Alerts",
+              "description": null,
+              "arguments": {
+                "route": "9ba2c92e-c7ae-4f3e-90a3-15669f25f421",
+                "title": "IBM X-Force IP Reputation: Get IPs by Category",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "20",
+              "left": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "uuid": "ca69c619-0695-42f3-87c9-0afd58656e8a",
+              "id": 5832
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Get IPs by Category",
+              "description": null,
+              "arguments": {
+                "name": "IBM X-Force IP Reputation",
+                "config": "5a444048-6ead-4806-b55b-1b95b233734a",
+                "params": {
+                  "skip": "",
+                  "limit": 10,
+                  "endDate": "2021-11-29T18:30:00.000Z",
+                  "category": "Spam",
+                  "startDate": "",
+                  "descending": true
+                },
+                "version": "1.0.0",
+                "connector": "ibm-xforce-ip-reputation",
+                "operation": "get_ips_by_category",
+                "operationTitle": "Get IPs by Category",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "status": null,
+              "top": "120",
+              "left": "180",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "uuid": "d4b088d7-107b-46eb-8920-8d4f24a81974",
+              "id": 5833
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Alerts -> Get IPs by Category",
+              "targetStep": "/api/3/workflow_steps/d4b088d7-107b-46eb-8920-8d4f24a81974",
+              "sourceStep": "/api/3/workflow_steps/ca69c619-0695-42f3-87c9-0afd58656e8a",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "a688d83d-758f-48c3-a110-0dc1da0a1eb8"
+            }
+          ],
+          "priority": null,
+          "uuid": "b74c1e1c-547b-4716-a343-f961e54a1b8f",
+          "recordTags": [
+            "IBM X-Force",
+            "IP Reputation"
+          ],
+          "id": 1485,
+          "createUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
+          "createDate": 1638261806,
+          "modifyUser": "/api/3/people/3451141c-bac6-467c-8d72-85e0fab569ce",
+          "modifyDate": 1638262907,
+          "owners": [],
+          "isPrivate": false
+        }
+      ]
+    }
+  ],
+  "exported_tags": [
+    "IBM X-Force",
+    "IP Reputation"
+  ]
+}

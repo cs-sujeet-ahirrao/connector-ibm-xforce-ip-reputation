@@ -1,0 +1,399 @@
+{
+  "name": "ibm-xforce-ip-reputation",
+  "label": "IBM X-Force IP Reputation",
+  "description": "Retrieves IP address, geolocation, risk ratings and content categorization for IP addresses and subnets.",
+  "publisher": "Fortinet",
+  "cs_approved": true,
+  "cs_compatible": true,
+  "version": "1.0.0",
+  "category": "Threat Intelligence",
+  "icon_small_name": "small.png",
+  "icon_large_name": "large.png",
+  "help_online": "",
+  "configuration": {
+    "fields": [
+      {
+        "title": "Server URL",
+        "required": true,
+        "editable": true,
+        "visible": true,
+        "type": "text",
+        "name": "server_url",
+        "value": "https://api.xforce.ibmcloud.com"
+      },
+      {
+        "title": "API Key",
+        "required": true,
+        "editable": true,
+        "visible": true,
+        "type": "password",
+        "name": "api_key"
+      },
+      {
+        "title": "API Password",
+        "required": true,
+        "editable": true,
+        "visible": true,
+        "type": "password",
+        "name": "api_password"
+      },
+      {
+        "title": "Verify SSL",
+        "required": false,
+        "editable": true,
+        "visible": true,
+        "type": "checkbox",
+        "name": "verify_ssl",
+        "value": true
+      }
+    ]
+  },
+  "operations": [
+    {
+      "operation": "get_ips_by_category",
+      "title": "Get IPs by Category",
+      "description": "Return a list of IPs according to the category and date range.",
+      "category": "investigation",
+      "annotation": "get_ips_by_category",
+      "output_schema": {
+        "category": "",
+        "rows": [
+          {
+            "ip": "",
+            "created": "",
+            "score": ""
+          }
+        ],
+        "nextPage": "",
+        "previousPage": ""
+      },
+      "parameters": [
+        {
+          "title": "Category",
+          "name": "category",
+          "tooltip": "Specify the categories for IPs.",
+          "description": "Specify the categories for IPs",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "select",
+          "options": [
+            "Spam",
+            "Anonymisation Services",
+            "Scanning IPs",
+            "Dynamic IPs",
+            "Malware",
+            "Bots",
+            "Botnet Command and Control Server"
+          ]
+        },
+        {
+          "title": "Start Date",
+          "name": "startDate",
+          "tooltip": "Specify the start of the date range for searching.",
+          "description": "Specify the start of the date range for searching.",
+          "placeholder": "2016-01-01T00:00:00Z",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "datetime"
+        },
+        {
+          "title": "End Date",
+          "name": "endDate",
+          "tooltip": "Specify the end of the date range for searching. If not specified, the query will return the newest IPs.",
+          "description": "Specify the end of the date range for searching. If not specified, the query will return the newest IPs.",
+          "placeholder": "2016-01-01T00:00:00Z",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "datetime"
+        },
+        {
+          "title": "Descending",
+          "name": "descending",
+          "tooltip": "Specify the order of returned IPs according to the created date and ips, default value is true.",
+          "description": "Specify the order of returned IPs according to the created date and ips, default value is true.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "checkbox",
+          "value": true
+        },
+        {
+          "title": "Limit",
+          "name": "limit",
+          "tooltip": "Specify the number of IPs to be returned. If not specified, the query will return 200 IPs by default.",
+          "description": "Specify the number of IPs to be returned. If not specified, the query will return 200 IPs by default.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "integer"
+        },
+        {
+          "title": "Skip",
+          "name": "skip",
+          "tooltip": "Specify the number of IPs to be skipped while searching.",
+          "description": "Specify the number of IPs to be skipped while searching.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "integer"
+        }
+      ],
+      "enabled": true
+    },
+    {
+      "operation": "get_ip_report",
+      "title": "Get IP Report",
+      "description": "Returns the IP report for the specified IP.",
+      "category": "investigation",
+      "annotation": "get_ip_report",
+      "output_schema": {
+        "ip": "",
+        "history": [
+          {
+            "created": "",
+            "geo": {
+              "country": "",
+              "countrycode": ""
+            },
+            "ip": "",
+            "reason": "",
+            "reasonDescription": "",
+            "malware_extended": {
+              "BotNet": "",
+              "lat": "",
+              "long": "",
+              "city": "",
+              "CC": "",
+              "country": "",
+              "isnew": ""
+            },
+            "deleted": "",
+            "reason_removed": "",
+            "categoryDescriptions": {
+              "key": "",
+              "value": ""
+            },
+            "cats": {
+              "key": "",
+              "value": ""
+            },
+            "score": "",
+            "subnet": "",
+            "asns": {
+              "asn": {
+                "Company": "",
+                "cidr": ""
+              }
+            }
+          }
+        ],
+        "subnets": [
+          {
+            "created": "",
+            "geo": {
+              "country": "",
+              "countrycode": ""
+            },
+            "ip": "",
+            "reason": "",
+            "reasonDescription": "",
+            "malware_extended": {
+              "BotNet": "",
+              "lat": "",
+              "long": "",
+              "city": "",
+              "CC": "",
+              "country": "",
+              "isnew": ""
+            },
+            "deleted": "",
+            "reason_removed": "",
+            "categoryDescriptions": {
+              "key": "",
+              "value": ""
+            },
+            "cats": {
+              "key": "",
+              "value": ""
+            },
+            "score": "",
+            "subnet": "",
+            "asns": {
+              "asn": {
+                "Company": "",
+                "cidr": ""
+              }
+            }
+          }
+        ],
+        "cats": {
+          "key": "",
+          "value": ""
+        },
+        "geo": {
+          "country": "",
+          "countrycode": ""
+        },
+        "score": "",
+        "reason": "",
+        "reasonDescription": "",
+        "categoryDescriptions": {
+          "key": "",
+          "value": ""
+        },
+        "tags": [
+          {
+            "type": "",
+            "tag": "",
+            "entityType": "",
+            "entityId": "",
+            "commentId": "",
+            "user": "",
+            "date": "",
+            "displayName": ""
+          }
+        ]
+      },
+      "parameters": [
+        {
+          "title": "IP Address",
+          "name": "ip",
+          "visible": true,
+          "required": true,
+          "editable": true,
+          "type": "text",
+          "placeholder": "1.2.3.4/216.137.61.0x08/0270.0254.0153.0362/0xB8.0xAC.0x6B.0xF2",
+          "tooltip": "Specify ip addresses in all valid formats (ipv4, ipv6, CIDR, etc).",
+          "description": "Specify ip addresses in all valid formats."
+        }
+      ],
+      "enabled": true
+    },
+    {
+      "operation": "get_ip_reputation",
+      "title": "Get IP Reputation",
+      "description": "Returns the IP reputation report for the specified IP.",
+      "category": "investigation",
+      "annotation": "get_ip_reputation",
+      "output_schema": {
+        "ip": "",
+        "history": [
+          {
+            "created": "",
+            "geo": {
+              "country": "",
+              "countrycode": ""
+            },
+            "ip": "",
+            "reason": "",
+            "reasonDescription": "",
+            "malware_extended": {
+              "BotNet": "",
+              "lat": "",
+              "long": "",
+              "city": "",
+              "CC": "",
+              "country": "",
+              "isnew": ""
+            },
+            "deleted": "",
+            "reason_removed": "",
+            "categoryDescriptions": {
+              "key": "",
+              "value": ""
+            },
+            "cats": {
+              "key": "",
+              "value": ""
+            },
+            "score": "",
+            "subnet": "",
+            "asns": {
+              "asn": {
+                "Company": "",
+                "cidr": ""
+              }
+            }
+          }
+        ]
+      },
+      "parameters": [
+        {
+          "title": "IP Address",
+          "name": "ip",
+          "visible": true,
+          "required": true,
+          "editable": true,
+          "type": "text",
+          "placeholder": "1.2.3.4/216.137.61.0x08/0270.0254.0153.0362/0xB8.0xAC.0x6B.0xF2",
+          "tooltip": "Specify ip addresses in all valid formats (ipv4, ipv6, CIDR, etc).",
+          "description": "Specify ip addresses in all valid formats."
+        }
+      ],
+      "enabled": true
+    },
+    {
+      "operation": "get_malware_reputation",
+      "title": "Get Malware Reputation",
+      "description": "Returns the malware associated with the entered IP.",
+      "category": "investigation",
+      "annotation": "get_malware_reputation",
+      "output_schema": {
+        "malware": [
+          {
+            "family": [
+              ""
+            ],
+            "first": "",
+            "last": "",
+            "md5": "",
+            "origin": "",
+            "uri": ""
+          }
+        ]
+      },
+      "parameters": [
+        {
+          "title": "IP Address",
+          "name": "ip",
+          "visible": true,
+          "required": true,
+          "editable": true,
+          "type": "text",
+          "placeholder": "1.2.3.4/216.137.61.0x08/0270.0254.0153.0362/0xB8.0xAC.0x6B.0xF2",
+          "tooltip": "Specify ip addresses in all valid formats (ipv4, ipv6, CIDR, etc).",
+          "description": "Specify ip addresses in all valid formats."
+        }
+      ],
+      "enabled": true
+    },
+    {
+      "operation": "get_networks_for_asn",
+      "title": "Get Networks for ASN",
+      "description": "Returns all networks that are assigned to an Autonomous System Number.",
+      "category": "investigation",
+      "annotation": "get_networks_for_asn",
+      "output_schema": {
+        "networks": [
+          ""
+        ]
+      },
+      "parameters": [
+        {
+          "title": "ASN Number",
+          "name": "asn",
+          "visible": true,
+          "required": true,
+          "editable": true,
+          "type": "text",
+          "tooltip": "Specify a valid ASN number.",
+          "description": "Specify a valid ASN number."
+        }
+      ],
+      "enabled": true
+    }
+  ]
+}
